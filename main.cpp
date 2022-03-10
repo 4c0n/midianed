@@ -3,9 +3,12 @@
 
 #include <QLocale>
 #include <QTranslator>
+#include <QQuickStyle>
 
 int main(int argc, char *argv[])
 {
+    QQuickStyle::setStyle("Fusion");
+
     QGuiApplication app(argc, argv);
 
     QTranslator translator;
