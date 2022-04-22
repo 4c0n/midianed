@@ -17,6 +17,8 @@ Window {
             Layout.column: 0
             Layout.fillHeight: true
 
+            // TODO: Don't let the button out of the frame
+            // TODO: Snap to cell in GridView
             Button {
                 text: "BUTTON"
 
@@ -38,6 +40,7 @@ Window {
             Layout.column: 1
             Layout.fillHeight: true
             Layout.fillWidth: true
+            // TODO: Use dots or lines to clarify where cells are and highlight them on hover
             cellWidth: 80
             cellHeight: 80
 
@@ -50,8 +53,6 @@ Window {
                     id: delegateRoot
                     width: 80
                     height: 80
-
-                    property int visualIndex: DelegateModel.itemsIndex
                 }
             }
         }
