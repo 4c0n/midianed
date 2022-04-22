@@ -1,6 +1,7 @@
 import QtQuick
 import QtQuick.Controls
 import QtQuick.Layouts
+import QtQml.Models
 
 Window {
     width: 1024
@@ -18,27 +19,41 @@ Window {
 
             Button {
                 text: "BUTTON"
-                onClicked: createButton();
+
+                Drag.active: dragArea.drag.active
+                Drag.hotSpot.x: 10
+                Drag.hotSpot.y: 10
+
+                MouseArea {
+                    id: dragArea
+                    anchors.fill: parent
+
+                    drag.target: parent
+                }
             }
         }
-        Frame {
-            id: componentFrame
+
+        GridView {
+            id: grid
             Layout.column: 1
             Layout.fillHeight: true
             Layout.fillWidth: true
-        }
-    }
+            cellWidth: 80
+            cellHeight: 80
 
-    function createButton() {
-        Qt.createQmlObject(`
-            import QtQuick.Controls
+            model: DelegateModel {
+                id: gridModel
+                model: ListModel {
+                    id: listModel
+                }
+                delegate: DropArea {
+                    id: delegateRoot
+                    width: 80
+                    height: 80
 
-            Button {
-                text: "Dynamic Button"
+                    property int visualIndex: DelegateModel.itemsIndex
+                }
             }
-            `,
-            componentFrame,
-            'dynamicButton'
-        );
+        }
     }
 }
