@@ -35,24 +35,30 @@ Window {
             }
         }
 
-        GridView {
-            id: grid
+        Rectangle {
             Layout.column: 1
-            Layout.fillHeight: true
-            Layout.fillWidth: true
-            // TODO: Use dots or lines to clarify where cells are and highlight them on hover
-            cellWidth: 80
-            cellHeight: 80
 
-            model: DelegateModel {
-                id: gridModel
-                model: ListModel {
-                    id: listModel
-                }
-                delegate: DropArea {
-                    id: delegateRoot
-                    width: 80
-                    height: 80
+            width: 600
+            height: 200
+
+            // TODO: Maybe using Grid and Column is more appropriate in this case?
+            GridView {
+                id: grid
+                anchors.fill: parent
+
+                clip: true
+                // TODO: Highlight them on hover
+                cellWidth: 20
+                cellHeight: 20
+
+                model: 300
+
+                delegate: Rectangle {
+                    color: "lightgrey"
+                    width: 20
+                    height: 20
+                    border.color: "grey"
+                    border.width: 1
                 }
             }
         }
