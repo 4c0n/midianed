@@ -38,27 +38,37 @@ Window {
         Rectangle {
             Layout.column: 1
 
-            width: 600
-            height: 200
+            width: 602
+            height: 202
 
-            // TODO: Maybe using Grid and Column is more appropriate in this case?
-            GridView {
-                id: grid
-                anchors.fill: parent
+            border.width: 1
+            border.color: "grey"
 
-                clip: true
-                // TODO: Highlight them on hover
-                cellWidth: 20
-                cellHeight: 20
+            Rectangle {
+                x: 1
+                y: 1
+                width: 600
+                height: 200
 
-                model: 300
+                color: "#DFDFDF"
 
-                delegate: Rectangle {
-                    color: "lightgrey"
-                    width: 20
-                    height: 20
-                    border.color: "grey"
-                    border.width: 1
+                // TODO: Maybe using Grid and Column is more appropriate in this case?
+                GridView {
+                    id: grid
+                    anchors.fill: parent
+
+                    clip: true
+                    // TODO: Highlight them on hover
+                    cellWidth: 20
+                    cellHeight: 20
+
+                    model: 300
+
+                    delegate: Rectangle {
+                        color: "#FAFAFA"
+                        width: 19
+                        height: 19
+                    }
                 }
             }
         }
